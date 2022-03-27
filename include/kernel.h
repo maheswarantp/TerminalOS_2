@@ -15,4 +15,10 @@
 // TIMER
 #include <drivers/timer.h>
 
+// HDD
+#include <drivers/hdd.h>
+
+// FS
+#include <fs/fat.h>
+
 #endif

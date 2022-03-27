@@ -14,6 +14,15 @@ int intlen(int val, int base)
     return count;
 }
 
+bool strcmp(char* str1, char* str2)
+{
+    uint8_t i;
+    for(i = 0; str1[i] == str2[i]; i++)
+        if(str1[i+1] == '\0' || str2[i+1] == '\0') return 1;
+    return 0;
+}
+
+
 void itoa(uint8_t* str, int val, int base)
 {
     int len = intlen(val, base);

@@ -12,4 +12,8 @@ typedef          int    sint32_t;
 #define low_16(address) (uint16_t)((address) & 0xFFFF)
 #define high_16(address) (uint16_t)(((address) >> 16) & 0xFFFF)
 
+typedef unsigned char   bool;
+#define true 1
+#define false 0
+
 #endif
