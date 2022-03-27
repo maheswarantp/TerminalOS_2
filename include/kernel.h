@@ -8,4 +8,8 @@
 // GDT
 #include <cpu/gdt.h>
 
+// IDT
+#include <cpu/idt.h>
+#include <cpu/isr.h>
+
 #endif
