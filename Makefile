@@ -38,5 +38,4 @@ makedisk:
 	bash ./makedisk.sh
 
 clean:
-	cd src \
 	rm -rf *.o */*.o */*/*.o */*/*/*.o build/*

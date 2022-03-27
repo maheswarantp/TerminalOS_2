@@ -1,7 +1,7 @@
 #ifndef __STRING__
 #define __STRING__
 
-#include <screen.h>
+#include <drivers/screen.h>
 
 void printf(const char* str, ...);
 

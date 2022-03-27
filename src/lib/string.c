@@ -1,4 +1,4 @@
-#include <string.h>
+#include <lib/string.h>
 #include <stdarg.h>
 
 uint8_t rows = 0, cols = 0;
@@ -62,7 +62,7 @@ void printf(const char *str, ...)
         if(str[i] == '\n')
         {
             rows++;
-            cols++;
+            cols=0;
         } else if (rows >= 25)
         {
             clear_screen();

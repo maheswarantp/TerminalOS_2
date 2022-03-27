@@ -1,7 +1,11 @@
 #ifndef __KERNEL__
 #define __KERNEL__
 
-#include <screen.h>
-#include <string.h>
+// VGA buffer
+#include <drivers/screen.h>
+#include <lib/string.h>
+
+// GDT
+#include <cpu/gdt.h>
 
 #endif
