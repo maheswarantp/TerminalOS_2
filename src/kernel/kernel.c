@@ -6,5 +6,7 @@ int main()
     init_gdt();
     isr_install();
 
-    asm volatile("int $0x10");
+
+    asm volatile("sti");
+    init_timer(1);
 }

@@ -12,4 +12,7 @@
 #include <cpu/idt.h>
 #include <cpu/isr.h>
 
+// TIMER
+#include <drivers/timer.h>
+
 #endif
