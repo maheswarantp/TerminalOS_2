@@ -34,8 +34,14 @@ run: update_disk
 
 all: run FORCE
 
+FORCE: ;
+
 makedisk:
 	bash ./makedisk.sh
+
+debug: FORCE
+	bash ./debug.sh
+
 
 clean:
 	rm -rf *.o */*.o */*/*.o */*/*/*.o build/*

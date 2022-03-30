@@ -1,6 +1,9 @@
 #ifndef __KERNEL__
 #define __KERNEL__
 
+// MULTIBOOT
+#include <multiboot.h>
+
 // VGA buffer
 #include <drivers/screen.h>
 #include <lib/string.h>

@@ -82,21 +82,31 @@ uint16_t getNextCluster(uint16_t cluster)
 void findFile(char* filename)
 {
     RootDirectory* fileroot = searchInRoot(filename);
+
+    printf("Size of file: %x\n", fileroot->sizeOfFile);
+
     int numBlocks = fileroot->sizeOfFile / (bootSector.bdb_bytes_per_sector * bootSector.bdb_sectors_per_cluster) + 1;
 
     uint16_t cluster = fileroot->lower16;
 
     char a[2];
 
+    printf("NumBlocks is %x\n", numBlocks);
+
     for(int i = 0; i < numBlocks; i++)
     {
+        if(cluster == 0x00)
+            cluster = 0xFF;
+
+        printf("Next Cluster is %x\n", cluster);
+
         uint16_t lba = findLBA(cluster);
         readFile(lba);
         for(int j = 0; j < bootSector.bdb_bytes_per_sector * bootSector.bdb_sectors_per_cluster; j++)
         {
             a[1] = '\0';
             a[0] = Textfile[j];
-            printf(a);
+            // printf(a);
         }
 
         // printf("\n END OF FILE \n");
@@ -107,33 +117,21 @@ void findFile(char* filename)
 
 void printBootSector()
 {
-    // printf("Bytes per Sector: %x", bootSector.bdb_bytes_per_sector);
-    // printf("\nDir Entries :%x", bootSector.bdb_dir_entries_count);
-    // print_hex();
-    // printf("\nReserved Sector Count: ");
-    // print_hex(bootSector.bdb_reserved_sector);
-    // printf("\nFat table count: ");
-    // print_hex(bootSector.bdb_fat_count);
-    // printf("\nSectors per Cluster: ");
-    // print_hex(bootSector.bdb_sectors_per_cluster);
-    // printf("\nTotal Sectors:  ");
-    // print_hex(bootSector.bdb_total_sectors);
-    // printf("\nSectors per fat:  ");
-    // print_hex(bootSector.bdb_sectors_per_fat);
+    printf("Bytes per Sector: %x\n", bootSector.bdb_bytes_per_sector);
+    printf("Dir Entries: %x\n", bootSector.bdb_dir_entries_count);
+    printf("Reserved Sectors: %x\n", bootSector.bdb_reserved_sector);
+    printf("Fat Table count: %x\n", bootSector.bdb_fat_count);
+    printf("Sectors per cluster: %x\n", bootSector.bdb_sectors_per_cluster);
+    printf("Total Sectors: %x\n", bootSector.bdb_sectors_per_cluster);
+    printf("Sectors per fat: %x\n", bootSector.bdb_sectors_per_fat);
 }
 
 void printGlobalVariables()
 {
-    // printf("\nReserved Sector Count: ");
-    // print_hex(reservedSectorCount);
-    // printf("\nFatTableSectorCount:  ");
-    // print_hex(fatTableSectorCount);
-    // printf("\nRootSectorCount:  ");
-    // print_hex(rootSectorCount);
-    // printf("\nFat Table Begin:  ");
-    // print_hex(0x01);
-    // printf("\nRootBegin:  ");
-    // print_hex(rootBegin);
-    // printf("\nDataBegin:  ");
-    // print_hex(dataBlockBegin);
+    printf("Reserved Sector Count: %x", reservedSectorCount);
+    printf("\nFatTableSectorCount:  %x", fatTableSectorCount);
+    printf("\nRootSectorCount:  %x", rootSectorCount);
+    printf("\nFat Table Begin:  %x", 0x01);
+    printf("\nRootBegin:  %x", rootBegin);
+    printf("\nDataBegin:  %x", dataBlockBegin);
 }

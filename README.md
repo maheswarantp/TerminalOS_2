@@ -30,8 +30,8 @@
     ```
 
 # Known issues:
--   Build process has to be run twice for kernel changes to take effect, no idea why
-
+-   Build process has to be run twice for kernel changes to take effect, no idea why                        (FIXED)
+-   FAT Filesystem code can access only the first block of data from disk for now, fix to be issued later.
 
 # Planned Features:
 - 32 bit protected mode operation
@@ -46,7 +46,7 @@
 
 # Finished Features
 - 32 bit protected mode operation
-- FAT-12 readonly filesystem
+- FAT-12 readonly filesystem    (Partially functional)
 - GRUB as bootloader
 - TTY Text mode based interface
 
