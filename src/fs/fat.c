@@ -106,7 +106,7 @@ void findFile(char* filename)
         {
             a[1] = '\0';
             a[0] = Textfile[j];
-            // printf(a);
+            printf(a);
         }
 
         // printf("\n END OF FILE \n");

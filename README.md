@@ -13,21 +13,21 @@
 - some linux distro
 
 ### Steps
--   Make a mnt directory to mount the disk image for qemu to use
+-   Run build-env/build.sh to setup appropriate build environment
     ```
-        mkdir mnt
+        bash build-env/build.sh
     ```
--   Use make to do the following:
+-   Make the following folders build, mnt and debug
     ```
-        make makeGrubDisk
+        mkdir build mnt debug
     ```
-    and then
+-   Run makedisk from MakeFile
+    ```
+        make makedisk
+    ```
+-   Run make
     ```
         make run
-    ```
-    clean with
-    ```
-        make clean          # doesnt remove the disk.img created by makeGrubDisk, use cleanAll to erase all
     ```
 
 # Known issues:

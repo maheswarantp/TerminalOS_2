@@ -25,7 +25,12 @@ printf "Format to FAT-12            $(tput setaf 2)[OK]$(tput sgr0)\n"
 
 sudo grub-install --root-directory=/mnt/ --no-floppy --modules="normal multiboot part_msdos" /dev/loop30
 
-printf "Grub Install check          $(tput setaf 2)[OK]$(tput sgr0)\n"
+if fdisk -l disk.img | grep "FAT12"
+then
+    printf "Grub Install check          $(tput setaf 2)[OK]$(tput sgr0)\n"
+else
+    printf "Grub Install check          $(tput setaf 1)[NOT OK]$(tput sgr0)\n"
+fi 
 
 # Copy grub.cfg file to the /mnt
 sudo umount /mnt/

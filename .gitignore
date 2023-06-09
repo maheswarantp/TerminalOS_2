@@ -11,5 +11,7 @@
 *.img
 
 mnt/
+build/ 
+debug/ 
 
 .vscode
