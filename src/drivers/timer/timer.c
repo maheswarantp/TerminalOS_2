@@ -62,27 +62,32 @@
 uint32_t tick = 0;
 
 void timer_interrupt_handler(registers_t *regs) {
+    // printf("%d\n",tick);
     tick++;
+    asm volatile("sti");
+
 }
 
 uint32_t getTime()
 {
+    // printf("%d", tick);
     return tick;
 }
 
-void sleep(uint32_t time)
+void sleep(uint32_t second)
 {
-    uint32_t up1 = getTime();
-    while(getTime() - up1 <= time);
+    uint32_t end = tick + second * 100;
+    printf("%d %d\n", end, tick);
+    while(tick < end);
 }
 
 
-void init_timer(uint32_t freq) {
+void init_timer(uint16_t freq) {
     register_interrupt_handler(IRQ0, &timer_interrupt_handler);
 
-    uint32_t d = 1193180 / freq;
+    uint16_t d = 1193180 / freq;
 
     outb(0x43, 0x36);
-    outb(0x40, (uint8_t)(d & 0xFF));
-    outb(0x40, (uint8_t)((d >> 8) & 0xFF));
+    outb(0x40, d & 0xFF);
+    outb(0x40, (d >> 8) & 0xFF);
 }

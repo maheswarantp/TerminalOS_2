@@ -6,7 +6,7 @@
 
 void timer_callback();
 
-void init_timer(uint32_t freq);
+void init_timer(uint16_t freq);
 
 void uptime();
 

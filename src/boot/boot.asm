@@ -39,11 +39,13 @@ stack_top:
 section .text
 global _start
 _start:
-    push eax
-    mov eax, 0x100000
-    mov [eax], dword RANDOM_VAL
     mov esp, stack_top
-    
+    push eax
+    push ebx
+    ; push ecx
+    ; mov ecx, 0x100000
+    ; mov [ecx], dword RANDOM_VAL
+
     cli
     call main                                 ; never return from kernel_main, in case returns, hang the cpu
 ; 
